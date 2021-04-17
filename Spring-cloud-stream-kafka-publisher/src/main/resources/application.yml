@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: Kafka_Stream
+
+ 
+           
+          
+            

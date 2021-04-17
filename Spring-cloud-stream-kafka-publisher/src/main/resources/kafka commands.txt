@@ -1,0 +1,35 @@
+start zookeeper : .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+start kafka server : .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+create a topic : .\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Kafka_Example
+
+starting consumer : .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 �topic Kafka_Example --from-beginning
+
+starting producer : .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic Kafka_Example
+
+general commands to kill the processes running on ports
+--------------------------------------------------------
+netstat -ano | findstr :9092
+
+taskkill /PID 17964 /F
+
+user model json
+-------------------
+create new topic : .\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Kafka_Example_json
+
+starting producer : .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic Kafka_Example_json
+
+{"name": "Sam", "dept": "Technology"}
+{"name": "kiran", "dept": "ECE"}  
+
+----------------------
+List down all available topics : kafka-topics.bat --list --zookeeper localhost:2181
+
+-----------------------------
+sample data 
+-------------
+{
+    "id":123,
+    "name":"Core-java"
+}
